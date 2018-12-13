@@ -1,15 +1,11 @@
-FROM ubuntu:14.04
+FROM alpine:3.6
 
-ENV DEBIAN_FRONTEND noninteractive
+RUN apk add --update --no-cache bash
 
 ADD jdk-8u51-linux-x64.tar.gz /opt/jdk
 
 ENV JAVA_HOME /opt/jdk/jdk1.8.0_51
-
-RUN cd /opt/jdk && \    
-    update-alternatives --install /usr/bin/java  java  /opt/jdk/jdk1.8.0_51/bin/java 100 && \    
-    update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_51/bin/javac 100 && \    
-    update-alternatives --install /usr/bin/jar   jar   /opt/jdk/jdk1.8.0_51/bin/jar 100 
+ENV PATH /opt/jdk/jdk1.8.0_51/bin:${PATH}
 
 CMD ["bin/bash"]
 
