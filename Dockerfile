@@ -11,7 +11,5 @@ RUN cd /opt/jdk && \
     update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_51/bin/javac 100 && \    
     update-alternatives --install /usr/bin/jar   jar   /opt/jdk/jdk1.8.0_51/bin/jar 100 
 
-RUN apt-get -qq update && apt-get -qq upgrade -y
-
 CMD ["bin/bash"]
 
